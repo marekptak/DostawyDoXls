@@ -101,9 +101,19 @@ namespace Marek_Ptak
                 int IndexDataDost = rnd.Next(dataDostawy.Length);
                 int IndexPrzyjal = rnd.Next(przyjal.Length);
 
+                double dlugosc1;
+                string profil1 = profil[IndexProfil];
                 double masa1 = masa[IndexMasa];
                 double srednica1 = srednica[IndexSrednica];
-                double dlugosc1 = (masa1/22.2)*((60*60)/(srednica1*srednica1));
+                if (profil1 == "pręt okrągły")
+                {
+                     dlugosc1 = Math.Round((masa1 / 22.2) * ((60 * 60) / (srednica1 * srednica1)),1);
+                }
+                else
+                {
+                    dlugosc1 = 0;
+                }
+
 
 
 
@@ -111,7 +121,7 @@ namespace Marek_Ptak
                 worksheet.Cells[i, 1] = new Cell(gatunek[IndexGatunek]);
                 worksheet.Cells[i, 2] = new Cell(srednica1);
                 worksheet.Cells[i, 3] = new Cell(wytop[IndexWytop]);
-                worksheet.Cells[i, 4] = new Cell(profil[IndexProfil]);
+                worksheet.Cells[i, 4] = new Cell(profil1);
                 worksheet.Cells[i, 5] = new Cell(masa1);
                 worksheet.Cells[i, 6] = new Cell(dlugosc1);
                 worksheet.Cells[i, 7] = new Cell(dostawca[IndexDostawca]);
